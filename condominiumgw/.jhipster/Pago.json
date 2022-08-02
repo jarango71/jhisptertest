@@ -1,0 +1,59 @@
+{
+  "applications": ["condominiumgw", "paymentms"],
+  "changelogDate": "20220729235749",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "pago",
+  "fields": [
+    {
+      "fieldName": "anio",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "4"
+    },
+    {
+      "fieldName": "mes",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "RegisterState",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVO,DESACTIVO"
+    },
+    {
+      "fieldName": "fechaGeneracion",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaPago",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Pago",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "cuota",
+      "otherEntityRelationshipName": "pago",
+      "relationshipName": "cuota",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

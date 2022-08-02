@@ -1,0 +1,29 @@
+{
+  "condominiumgwApp": {
+    "condominium": {
+      "home": {
+        "title": "Condominiums",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Condominium",
+        "createOrEditLabel": "Crear o editar Condominium",
+        "notFound": "Ningún Condominiums encontrado"
+      },
+      "created": "Un nuevo Condominium ha sido creado con el identificador {{ param }}",
+      "updated": "Un Condominium ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Condominium ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Condominium {{ id }}?"
+      },
+      "detail": {
+        "title": "Condominium"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "direccion": "Direccion",
+      "logo": "Logo",
+      "latitud": "Latitud",
+      "longitud": "Longitud",
+      "estado": "Estado"
+    }
+  }
+}

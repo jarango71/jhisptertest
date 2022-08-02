@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: condominiumgw
+  namespace: condominium
+spec:
+  rules:
+    - host: condominiumgw.condominium.condominium.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: condominiumgw
+              servicePort: 8080
+          - path: /services/managerms/
+            backend:
+              serviceName: managerms
+              servicePort: 8080
+          - path: /services/paymentms/
+            backend:
+              serviceName: paymentms
+              servicePort: 8080

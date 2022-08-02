@@ -1,0 +1,34 @@
+Dynatrace monitoreo
+Splunk monitoreo de logs
+Istio service mesh (seguridad, politicas, ruteo) monta un segundo contenedor en el pod llamado sitecar
+Linkerd service mesh, mas liviano que isitio
+Con Istio se monta (Grafana(Dasboads de metricas, Prometheus(Captura de metricas), Jaeger(Trazabilidad), Kiali(Monitoreo en linea))
+service mesh manejo de logs
+DDD domain driven desing
+
+VIDEOS
+https://www.youtube.com/watch?v=WxuvwSPSgXA
+https://www.youtube.com/watch?v=mCesuGk-Fks
+
+https://www.youtube.com/watch?v=EgwVQN6GNJg
+https://www.youtube.com/watch?v=iEFb2Zg4xUg
+
+https://youtu.be/EgwVQN6GNJg
+
+JIB
+
+https://cloud.google.com/java/getting-started/jib?hl=es-419
+
+
+Conocimiento en Java 8+, Spring boot, Tecnologías Cloud
+Experiencia en refactorización de código, DDD, TDD BDD, integración continua
+Conocimientos avanzados en Microservicios
+Kubernetes
+Kafka
+Conocimiento de patrones de Diseño y de optimización(paralelismo/asincronía)
+Conocimiento en Azure Cloud/Stack
+Conocimiento en Kubernetes/contenedores/BD como servicio
+Conocimientos en alguna BD SQLServer, MongoDB, Redis,
+Conocimientos en metodologías ágiles y trabajando en equipos ágiles
+Ojalá con experiencia en servicios SOAP.
+Ojalá experiencia en banca

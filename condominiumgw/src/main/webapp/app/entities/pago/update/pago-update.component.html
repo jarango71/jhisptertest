@@ -1,0 +1,177 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="app-pago-heading" data-cy="PagoCreateUpdateHeading" appTranslate="condominiumgwApp.pago.home.createOrEditLabel">
+        Create or edit a Pago
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.anio" for="field_anio">Anio</label>
+          <input type="text" class="form-control" name="anio" id="field_anio" data-cy="anio" formControlName="anio" />
+          <div *ngIf="editForm.get('anio')!.invalid && (editForm.get('anio')!.dirty || editForm.get('anio')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('anio')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('anio')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 4 }"
+            >
+              This field cannot be longer than 4 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.mes" for="field_mes">Mes</label>
+          <input type="text" class="form-control" name="mes" id="field_mes" data-cy="mes" formControlName="mes" />
+          <div *ngIf="editForm.get('mes')!.invalid && (editForm.get('mes')!.dirty || editForm.get('mes')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('mes')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('mes')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.valor" for="field_valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+          <div *ngIf="editForm.get('valor')!.invalid && (editForm.get('valor')!.dirty || editForm.get('valor')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('valor')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('valor')?.errors?.number" appTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.estado" for="field_estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'condominiumgwApp.RegisterState.null' | translate }}</option>
+            <option *ngFor="let registerState of registerStateValues" [value]="registerState">
+              {{ 'condominiumgwApp.RegisterState.' + registerState | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('estado')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.fechaGeneracion" for="field_fechaGeneracion"
+            >Fecha Generacion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaGeneracion"
+              data-cy="fechaGeneracion"
+              type="text"
+              class="form-control"
+              name="fechaGeneracion"
+              ngbDatepicker
+              #fechaGeneracionDp="ngbDatepicker"
+              formControlName="fechaGeneracion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaGeneracionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('fechaGeneracion')!.invalid &&
+              (editForm.get('fechaGeneracion')!.dirty || editForm.get('fechaGeneracion')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fechaGeneracion')?.errors?.required"
+              appTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.fechaPago" for="field_fechaPago">Fecha Pago</label>
+          <div class="input-group">
+            <input
+              id="field_fechaPago"
+              data-cy="fechaPago"
+              type="text"
+              class="form-control"
+              name="fechaPago"
+              ngbDatepicker
+              #fechaPagoDp="ngbDatepicker"
+              formControlName="fechaPago"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaPagoDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('fechaPago')!.invalid && (editForm.get('fechaPago')!.dirty || editForm.get('fechaPago')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fechaPago')?.errors?.required"
+              appTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.pago.cuota" for="field_cuota">Cuota</label>
+          <select class="form-control" id="field_cuota" data-cy="cuota" name="cuota" formControlName="cuota">
+            <option *ngIf="!editForm.get('cuota')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="cuotaOption.id === editForm.get('cuota')!.value?.id ? editForm.get('cuota')!.value : cuotaOption"
+              *ngFor="let cuotaOption of cuotasSharedCollection; trackBy: trackCuotaById"
+            >
+              {{ cuotaOption.nombre }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['cuota'])!.invalid && (editForm.get(['cuota'])!.dirty || editForm.get(['cuota'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['cuota'])?.errors?.required" appTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

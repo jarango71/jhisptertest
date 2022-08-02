@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["condominiumgw", "managerms", "paymentms"],
+    "clusteredDbApps": [],
+    "deploymentType": "kubernetes",
+    "directoryPath": "../",
+    "dockerPushCommand": "docker push",
+    "dockerRepositoryName": "jarango71",
+    "ingressDomain": "condominium.com",
+    "ingressType": "nginx",
+    "istio": false,
+    "jwtSecretKey": "MDVmZjFiODY1YzY3OWQ5MGE0OWRlYzM4M2E2OWRhZTNhOGRkM2Q1NWU3N2YyYWU0YzBhN2NjMjU2ZDgzNjk1ZTEwNWFmOTcwYTc5OTAwMjkxMzZiN2I3NzkxYzE1M2JiOGJjZQ==",
+    "kubernetesNamespace": "condominium",
+    "kubernetesServiceType": "Ingress",
+    "kubernetesStorageClassName": "",
+    "kubernetesUseDynamicStorage": false,
+    "monitoring": "no",
+    "serviceDiscoveryType": false
+  }
+}

@@ -1,0 +1,137 @@
+/**
+ * The application configuration.
+ * @author Jorge Luis Arango Labrada
+ */
+application {
+     config {
+         baseName condominiumgw
+         applicationType gateway
+         serverPort 8080
+         packageName com.condominium
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         jhiPrefix app
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+         clientFramework angularX
+         serviceDiscoveryType no
+		 // Es un proyecto de from sin backend java
+         //skipServer true
+     }
+     entities *
+ }
+
+ application {
+     config {
+         baseName managerms
+         applicationType microservice
+         serverPort 8080
+         packageName com.manager
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+         serviceDiscoveryType no
+     }
+     entities Condominium, Property
+ }
+
+ application {
+     config {
+         baseName paymentms
+         applicationType microservice
+         serverPort 8080
+         packageName com.payment
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+         serviceDiscoveryType no
+     }
+     entities Cuota, Pago
+ }
+
+
+ deployment {
+  deploymentType kubernetes
+  appsFolders [condominiumgw, managerms, paymentms]
+  dockerRepositoryName "jarango71"
+  serviceDiscoveryType no
+  kubernetesServiceType Ingress
+  kubernetesNamespace condominium
+  ingressDomain "condominium.com"
+  ingressType nginx
+}
+
+
+entity Condominium {
+    nombre String maxlength(50) required
+    direccion String maxlength(50) required
+    logo String maxlength(50)
+    latitud Double
+    longitud Double
+	estado Boolean required
+}
+
+
+enum RegisterState {
+  ACTIVO,
+  DESACTIVO
+}
+
+entity Property {
+    manzana String maxlength(15) required
+    bloque String maxlength(15) required
+    numero String maxlength(10) required
+	ubicacion String maxlength(100) required
+	tipo String maxlength(20) required
+	diponibilidad String maxlength(20) required
+	observacion String maxlength(200) required
+	estado RegisterState required
+}
+
+enum CuotaType {
+  ORDINARIA,
+  EXTRAORDINARIA
+}
+
+entity Cuota {
+    nombre String maxlength(50) required
+    tipo CuotaType required
+    periodicidad String maxlength(25) required
+	aplica String maxlength(50) required
+	monto Double required
+	diponibilidad String maxlength(20) required
+	observacion String maxlength(200) required
+	estado RegisterState required
+}
+
+entity Pago {
+    anio String maxlength(4) required
+	mes String maxlength(50) required
+	valor Double required
+	estado RegisterState required
+    fechaGeneracion LocalDate required
+	fechaPago LocalDate required
+}
+
+relationship ManyToOne {
+    Property{condominium(nombre) required} to Condominium
+	Pago{cuota(nombre) required} to Cuota
+}
+
+dto all with mapstruct
+service all with serviceImpl
+paginate all with pagination

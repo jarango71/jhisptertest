@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pago">
+      <h2 data-cy="pagoDetailsHeading"><span appTranslate="condominiumgwApp.pago.detail.title">Pago</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pago.id }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.anio">Anio</span></dt>
+        <dd>
+          <span>{{ pago.anio }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.mes">Mes</span></dt>
+        <dd>
+          <span>{{ pago.mes }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.valor">Valor</span></dt>
+        <dd>
+          <span>{{ pago.valor }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.estado">Estado</span></dt>
+        <dd>
+          <span appTranslate="{{ 'condominiumgwApp.RegisterState.' + pago.estado }}">{{ pago.estado }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.fechaGeneracion">Fecha Generacion</span></dt>
+        <dd>
+          <span>{{ pago.fechaGeneracion | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.fechaPago">Fecha Pago</span></dt>
+        <dd>
+          <span>{{ pago.fechaPago | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.pago.cuota">Cuota</span></dt>
+        <dd>
+          <div *ngIf="pago.cuota">
+            <a [routerLink]="['/cuota', pago.cuota?.id, 'view']">{{ pago.cuota?.nombre }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pago', pago.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

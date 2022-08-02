@@ -1,0 +1,76 @@
+{
+  "applications": ["condominiumgw", "managerms"],
+  "changelogDate": "20220729235649",
+  "clientRootFolder": "managerms",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "property",
+  "fields": [
+    {
+      "fieldName": "manzana",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "bloque",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "numero",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "ubicacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "diponibilidad",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "observacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "RegisterState",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVO,DESACTIVO"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "managerms",
+  "name": "Property",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "condominium",
+      "otherEntityRelationshipName": "property",
+      "relationshipName": "condominium",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

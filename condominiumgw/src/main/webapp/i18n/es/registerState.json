@@ -1,0 +1,9 @@
+{
+  "condominiumgwApp": {
+    "RegisterState": {
+      "null": "",
+      "ACTIVO": "ACTIVO",
+      "DESACTIVO": "DESACTIVO"
+    }
+  }
+}

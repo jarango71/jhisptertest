@@ -1,0 +1,9 @@
+{
+  "condominiumgwApp": {
+    "CuotaType": {
+      "null": "",
+      "ORDINARIA": "ORDINARIA",
+      "EXTRAORDINARIA": "EXTRAORDINARIA"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "applications": ["condominiumgw", "paymentms"],
+  "changelogDate": "20220729235549",
+  "clientRootFolder": "paymentms",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cuota",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "CuotaType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ORDINARIA,EXTRAORDINARIA"
+    },
+    {
+      "fieldName": "periodicidad",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "25"
+    },
+    {
+      "fieldName": "aplica",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "monto",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "diponibilidad",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "observacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "RegisterState",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVO,DESACTIVO"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "paymentms",
+  "name": "Cuota",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

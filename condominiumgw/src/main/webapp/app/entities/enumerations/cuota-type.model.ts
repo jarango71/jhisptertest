@@ -1,0 +1,5 @@
+export enum CuotaType {
+  ORDINARIA = 'ORDINARIA',
+
+  EXTRAORDINARIA = 'EXTRAORDINARIA',
+}

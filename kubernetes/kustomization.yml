@@ -1,0 +1,24 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+namespace: condominium
+
+resources:
+  - namespace.yml
+  # Individual apps
+  - condominiumgw-k8s/condominiumgw-deployment.yml
+  - condominiumgw-k8s/condominiumgw-service.yml
+  - condominiumgw-k8s/condominiumgw-postgresql.yml
+  - condominiumgw-k8s/condominiumgw-ingress.yml
+  - condominiumgw-k8s/jwt-secret.yml
+  - managerms-k8s/managerms-deployment.yml
+  - managerms-k8s/managerms-service.yml
+  - managerms-k8s/managerms-postgresql.yml
+  - managerms-k8s/jwt-secret.yml
+  - paymentms-k8s/paymentms-deployment.yml
+  - paymentms-k8s/paymentms-service.yml
+  - paymentms-k8s/paymentms-postgresql.yml
+  - paymentms-k8s/jwt-secret.yml
+# service discovery eureka/consul
+
+patchesJson6902:

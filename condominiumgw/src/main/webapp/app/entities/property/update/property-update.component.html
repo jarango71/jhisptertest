@@ -1,0 +1,235 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="app-property-heading" data-cy="PropertyCreateUpdateHeading" appTranslate="condominiumgwApp.property.home.createOrEditLabel">
+        Create or edit a Property
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.manzana" for="field_manzana">Manzana</label>
+          <input type="text" class="form-control" name="manzana" id="field_manzana" data-cy="manzana" formControlName="manzana" />
+          <div *ngIf="editForm.get('manzana')!.invalid && (editForm.get('manzana')!.dirty || editForm.get('manzana')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('manzana')?.errors?.required"
+              appTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('manzana')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 15 }"
+            >
+              This field cannot be longer than 15 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.bloque" for="field_bloque">Bloque</label>
+          <input type="text" class="form-control" name="bloque" id="field_bloque" data-cy="bloque" formControlName="bloque" />
+          <div *ngIf="editForm.get('bloque')!.invalid && (editForm.get('bloque')!.dirty || editForm.get('bloque')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('bloque')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bloque')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 15 }"
+            >
+              This field cannot be longer than 15 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.numero" for="field_numero">Numero</label>
+          <input type="text" class="form-control" name="numero" id="field_numero" data-cy="numero" formControlName="numero" />
+          <div *ngIf="editForm.get('numero')!.invalid && (editForm.get('numero')!.dirty || editForm.get('numero')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('numero')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('numero')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 10 }"
+            >
+              This field cannot be longer than 10 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.ubicacion" for="field_ubicacion">Ubicacion</label>
+          <input type="text" class="form-control" name="ubicacion" id="field_ubicacion" data-cy="ubicacion" formControlName="ubicacion" />
+          <div *ngIf="editForm.get('ubicacion')!.invalid && (editForm.get('ubicacion')!.dirty || editForm.get('ubicacion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ubicacion')?.errors?.required"
+              appTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ubicacion')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              This field cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.tipo" for="field_tipo">Tipo</label>
+          <input type="text" class="form-control" name="tipo" id="field_tipo" data-cy="tipo" formControlName="tipo" />
+          <div *ngIf="editForm.get('tipo')!.invalid && (editForm.get('tipo')!.dirty || editForm.get('tipo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('tipo')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tipo')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 20 }"
+            >
+              This field cannot be longer than 20 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.diponibilidad" for="field_diponibilidad">Diponibilidad</label>
+          <input
+            type="text"
+            class="form-control"
+            name="diponibilidad"
+            id="field_diponibilidad"
+            data-cy="diponibilidad"
+            formControlName="diponibilidad"
+          />
+          <div
+            *ngIf="
+              editForm.get('diponibilidad')!.invalid && (editForm.get('diponibilidad')!.dirty || editForm.get('diponibilidad')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('diponibilidad')?.errors?.required"
+              appTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('diponibilidad')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 20 }"
+            >
+              This field cannot be longer than 20 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.observacion" for="field_observacion">Observacion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observacion"
+            id="field_observacion"
+            data-cy="observacion"
+            formControlName="observacion"
+          />
+          <div *ngIf="editForm.get('observacion')!.invalid && (editForm.get('observacion')!.dirty || editForm.get('observacion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('observacion')?.errors?.required"
+              appTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('observacion')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 200 }"
+            >
+              This field cannot be longer than 200 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.estado" for="field_estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'condominiumgwApp.RegisterState.null' | translate }}</option>
+            <option *ngFor="let registerState of registerStateValues" [value]="registerState">
+              {{ 'condominiumgwApp.RegisterState.' + registerState | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('estado')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="condominiumgwApp.property.condominium" for="field_condominium">Condominium</label>
+          <select class="form-control" id="field_condominium" data-cy="condominium" name="condominium" formControlName="condominium">
+            <option *ngIf="!editForm.get('condominium')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                condominiumOption.id === editForm.get('condominium')!.value?.id ? editForm.get('condominium')!.value : condominiumOption
+              "
+              *ngFor="let condominiumOption of condominiumsSharedCollection; trackBy: trackCondominiumById"
+            >
+              {{ condominiumOption.nombre }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['condominium'])!.invalid && (editForm.get(['condominium'])!.dirty || editForm.get(['condominium'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['condominium'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

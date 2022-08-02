@@ -1,0 +1,128 @@
+/**
+ * The application configuration.
+ * @author Jorge Luis Arango Labrada
+ */
+application {
+     config {
+         baseName condominio
+         applicationType gateway
+         serverPort 8080
+         packageName com.condominio.app
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         jhiPrefix app
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+         clientFramework angularX
+         serviceDiscoveryType no
+		 // Es un proyecto de from sin backend java
+         //skipServer true
+     }
+     entities *
+ }
+
+application {
+     config {
+         baseName demolabgw
+         applicationType gateway
+         serverPort 8080
+         packageName cl.nttdata.demolab
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         jhiPrefix app
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+       //clientFramework angularX
+         serviceDiscoveryType no
+         skipClient true
+     }
+ }
+
+ application {
+     config {
+         baseName clientms
+         applicationType microservice
+         serverPort 8080
+         packageName cl.nttdata.demolab
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+         serviceDiscoveryType no
+     }
+     entities Client
+ }
+
+ application {
+     config {
+         baseName addressms
+         applicationType microservice
+         serverPort 8080
+         packageName cl.nttdata.demolab
+         authenticationType jwt
+         enableTranslation true
+         nativeLanguage	es
+         languages [es]
+         buildTool gradle
+         databaseType sql
+         prodDatabaseType postgresql
+         devDatabaseType postgresql
+         serviceDiscoveryType no
+     }
+     entities Address
+ }
+
+
+deployment {
+  deploymentType kubernetes
+  appsFolders [demolab]
+  dockerRepositoryName "edisito83"
+  serviceDiscoveryType no
+}
+
+ deployment {
+  deploymentType kubernetes
+  appsFolders [clientms, addressms, demolabgw]
+  dockerRepositoryName "edisito83"
+  serviceDiscoveryType no
+  kubernetesServiceType Ingress
+  kubernetesNamespace demolab
+  ingressDomain "demolab.databin.cl"
+//   ingressType nginx
+}
+
+
+entity Client {
+    firstName String maxlength(30) required
+    lastName String maxlength(30) required
+    addressName String maxlength(50) required
+    cellphoneNumber Long required
+    email String maxlength(50) required
+}
+
+entity Address {
+    name String maxlength(50) required
+    number Integer required
+    commune String maxlength(50) required
+}
+
+//relationship OneToOne {
+//    Client{address(name) required} to Address
+//}
+
+
+dto all with mapstruct
+service all with serviceImpl
+paginate all with pagination

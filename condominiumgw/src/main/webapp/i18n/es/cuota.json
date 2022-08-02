@@ -1,0 +1,31 @@
+{
+  "condominiumgwApp": {
+    "cuota": {
+      "home": {
+        "title": "Cuotas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Cuota",
+        "createOrEditLabel": "Crear o editar Cuota",
+        "notFound": "Ningún Cuotas encontrado"
+      },
+      "created": "Un nuevo Cuota ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cuota ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cuota ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cuota {{ id }}?"
+      },
+      "detail": {
+        "title": "Cuota"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "tipo": "Tipo",
+      "periodicidad": "Periodicidad",
+      "aplica": "Aplica",
+      "monto": "Monto",
+      "diponibilidad": "Diponibilidad",
+      "observacion": "Observacion",
+      "estado": "Estado"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: condominiumgw-postgresql
+  namespace: condominium
+  labels:
+    app: condominiumgw-postgresql
+type: Opaque
+data:
+  postgresql-password: NTE5N2NmODhhNjNjM2NkNmY3ZjBmZjllZmQ3OGE4ZWY5YzQ5ZmMzZTYxNDRjOWE4N2QyOTlkNTQ3YjQ1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: condominiumgw-postgresql
+  namespace: condominium
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: condominiumgw-postgresql
+  template:
+    metadata:
+      labels:
+        app: condominiumgw-postgresql
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+      containers:
+        - name: postgres
+          image: postgres:14.2
+          env:
+            - name: POSTGRES_USER
+              value: condominiumgw
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: condominiumgw-postgresql
+                  key: postgresql-password
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: condominiumgw-postgresql
+  namespace: condominium
+spec:
+  selector:
+    app: condominiumgw-postgresql
+  ports:
+    - port: 5432

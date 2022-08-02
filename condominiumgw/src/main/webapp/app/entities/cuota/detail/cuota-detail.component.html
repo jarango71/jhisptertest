@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cuota">
+      <h2 data-cy="cuotaDetailsHeading"><span appTranslate="condominiumgwApp.cuota.detail.title">Cuota</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cuota.id }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ cuota.nombre }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.tipo">Tipo</span></dt>
+        <dd>
+          <span appTranslate="{{ 'condominiumgwApp.CuotaType.' + cuota.tipo }}">{{ cuota.tipo }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.periodicidad">Periodicidad</span></dt>
+        <dd>
+          <span>{{ cuota.periodicidad }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.aplica">Aplica</span></dt>
+        <dd>
+          <span>{{ cuota.aplica }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.monto">Monto</span></dt>
+        <dd>
+          <span>{{ cuota.monto }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.diponibilidad">Diponibilidad</span></dt>
+        <dd>
+          <span>{{ cuota.diponibilidad }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.observacion">Observacion</span></dt>
+        <dd>
+          <span>{{ cuota.observacion }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.cuota.estado">Estado</span></dt>
+        <dd>
+          <span appTranslate="{{ 'condominiumgwApp.RegisterState.' + cuota.estado }}">{{ cuota.estado }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cuota', cuota.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

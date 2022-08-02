@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="property">
+      <h2 data-cy="propertyDetailsHeading"><span appTranslate="condominiumgwApp.property.detail.title">Property</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ property.id }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.manzana">Manzana</span></dt>
+        <dd>
+          <span>{{ property.manzana }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.bloque">Bloque</span></dt>
+        <dd>
+          <span>{{ property.bloque }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.numero">Numero</span></dt>
+        <dd>
+          <span>{{ property.numero }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.ubicacion">Ubicacion</span></dt>
+        <dd>
+          <span>{{ property.ubicacion }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.tipo">Tipo</span></dt>
+        <dd>
+          <span>{{ property.tipo }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.diponibilidad">Diponibilidad</span></dt>
+        <dd>
+          <span>{{ property.diponibilidad }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.observacion">Observacion</span></dt>
+        <dd>
+          <span>{{ property.observacion }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.estado">Estado</span></dt>
+        <dd>
+          <span appTranslate="{{ 'condominiumgwApp.RegisterState.' + property.estado }}">{{ property.estado }}</span>
+        </dd>
+        <dt><span appTranslate="condominiumgwApp.property.condominium">Condominium</span></dt>
+        <dd>
+          <div *ngIf="property.condominium">
+            <a [routerLink]="['/condominium', property.condominium?.id, 'view']">{{ property.condominium?.nombre }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/property', property.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
